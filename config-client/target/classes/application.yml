@@ -1,0 +1,19 @@
+server:
+  port: 8201
+spring:
+  application:
+    name: config-client
+  config:
+   import: configserver:http://localhost:8101 # 通过 DNS / 网关发现 （直连）
+  cloud:
+    config:
+      name: spring
+      profile: dev
+      label: master
+      #discovery: # 通过配置中心服务发现
+        #enabled: true
+        #service-id: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka
